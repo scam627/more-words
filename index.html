@@ -18,7 +18,7 @@
 				background: #333
 					url(https://static.tumblr.com/maopbtg/a5emgtoju/inflicted.png) repeat;
 			}
-			#paper {
+			.paper {
 				color: #fff;
 				font-size: 20px;
 			}
@@ -31,7 +31,7 @@
 				-o-user-select: none;
 				user-select: none;
 			}
-			#text {
+			.text {
 				width: 500px;
 				overflow: hidden;
 				background-color: #fff;
@@ -108,7 +108,7 @@
 	</head>
 	<body>
 		<div id="wrapper">
-			<form id="paper" method="get" action="">
+			<form id="paper" method="get" action="" class="paper">
 				<!-- <div id="margin">
 					<input
 						id="title"
@@ -121,6 +121,7 @@
 				<textarea
 					placeholder="Escribe tu mensaje"
 					id="text"
+					class="text"
 					name="text"
 					rows="4"
 					style="overflow: hidden; word-wrap: break-word; resize: none; height: 260px; "
@@ -129,6 +130,17 @@
 				<button id="button" value="Create" onclick="magic()">
 					Copiar
 				</button>
+			</form>
+			<form action="" class="paper">
+				<textarea
+					placeholder="Escribe tu mensaje, copialo y envia el link a quien deseas que lo lea"
+					id="information"
+					class="text"
+					name="text"
+					rows="4"
+					style="margin-top: 20px;overflow: hidden; word-wrap: break-word; resize: none; height: 78px; "
+					disabled
+				></textarea>
 			</form>
 		</div>
 	</body>
