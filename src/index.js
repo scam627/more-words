@@ -60,6 +60,11 @@ let counter = 0;
 const params = new URLSearchParams(window.location.search);
 let msg = params.get("val");
 
+const activate = () => {
+	launchFullScreen(document.documentElement);
+	next();
+};
+
 const next = () => {
 	let phrases = decode(msg).split("\n");
 	console.log(phrases[counter]);
@@ -84,3 +89,13 @@ const decode = inp => {
 	}
 	return out;
 };
+
+function launchFullScreen(element) {
+	if (element.requestFullScreen) {
+		element.requestFullScreen();
+	} else if (element.mozRequestFullScreen) {
+		element.mozRequestFullScreen();
+	} else if (element.webkitRequestFullScreen) {
+		element.webkitRequestFullScreen();
+	}
+}
