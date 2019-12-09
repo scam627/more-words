@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
 		<title>SCM</title>
 		<style>
 			* {
@@ -109,19 +109,25 @@
 	<body>
 		<div id="wrapper">
 			<form id="paper" method="get" action="">
-				<div id="margin">
-					Title: <input id="title" type="text" name="title" />
-				</div>
+				<!-- <div id="margin">
+					<input
+						id="title"
+						type="text"
+						name="title"
+						disabled
+						value="@stiven_life"
+					/>
+				</div> -->
 				<textarea
-					placeholder="Enter something funny."
+					placeholder="Escribe tu mensaje"
 					id="text"
 					name="text"
 					rows="4"
-					style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; "
+					style="overflow: hidden; word-wrap: break-word; resize: none; height: 260px; "
 				></textarea>
 				<br />
 				<button id="button" value="Create" onclick="magic()">
-					Copiar Mensaje
+					Copiar
 				</button>
 			</form>
 		</div>
