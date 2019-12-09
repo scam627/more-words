@@ -56,8 +56,13 @@ const el = document.querySelector(".text");
 const fx = new TextScramble(el);
 
 let counter = 0;
+
+const params = new URLSearchParams(window.location.search);
+let msg = params.get("val");
+
 const next = () => {
-	let phrases = document.getElementById("msg").value.split("\n");
+	let phrases = decode(msg).split("\n");
+	console.log(phrases[counter]);
 	fx.setText(phrases[counter]).then(() => {
 		setTimeout(next, 2000);
 	});

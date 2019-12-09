@@ -119,7 +119,9 @@
 					style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; "
 				></textarea>
 				<br />
-				<input id="button" value="Create" onclick="magic()" />
+				<button id="button" value="Create" onclick="magic()">
+					Copiar Mensaje
+				</button>
 			</form>
 		</div>
 	</body>
@@ -130,13 +132,35 @@
 			// $("#text").autosize();
 		});
 
+		const encode = inp => {
+			let out = new String();
+			for (let i = 0; i < inp.length; i++) {
+				out += String.fromCharCode(inp[i].charCodeAt() + 5);
+			}
+			return out;
+		};
+
+		const copiarAlPortapapeles = text => {
+			var aux = document.createElement("input");
+			aux.setAttribute("value", text);
+			document.body.appendChild(aux);
+			aux.select();
+			document.execCommand("copy");
+			document.body.removeChild(aux);
+		};
+		const decode = inp => {
+			let out = new String();
+			for (let i = 0; i < inp.length; i++) {
+				out += String.fromCharCode(inp[i].charCodeAt() - 5);
+			}
+			return out;
+		};
 		const magic = () => {
-			let val = document.getElementById("text").value; //.replace("\n", "|", "gi");
-			console.log(
-				encodeURI(
-					`http://andresjaramilloalvarez.com/options/msg.php?val=${val}`
-				)
+			let val = encode(document.getElementById("text").value);
+			val = encodeURI(
+				`${window.location.origin}/more-words/msg.html?val=${val}`
 			);
+			copiarAlPortapapeles(val);
 		};
 	</script>
 </html>
