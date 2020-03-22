@@ -148,7 +148,6 @@
 	<script>
 		$(document).ready(function() {
 			$("#title").focus();
-			// $("#text").autosize();
 		});
 
 		const encode = inp => {
@@ -159,7 +158,7 @@
 			return out;
 		};
 
-		const copiarAlPortapapeles = text => {
+		const copyMessage = text => {
 			var aux = document.createElement("input");
 			aux.setAttribute("value", text);
 			document.body.appendChild(aux);
@@ -167,19 +166,21 @@
 			document.execCommand("copy");
 			document.body.removeChild(aux);
 		};
-		const decode = inp => {
-			let out = new String();
-			for (let i = 0; i < inp.length; i++) {
-				out += String.fromCharCode(inp[i].charCodeAt() - 5);
-			}
-			return out;
-		};
 		const magic = () => {
-			let val = encode(document.getElementById("text").value);
+			let val = document.getElementById("text").value;
+			$.ajax({
+				url:
+					"https://andresjaramilloalvarez.com/talks/services/save_message.php",
+				method: "post",
+				data: { message: val },
+				success: res => {
+					console.log(JSON.parse(res));
+				}
+			});
 			val = encodeURI(
-				`${window.location.origin}/more-words/msg.html?val=${val}`
+				`${window.location.origin}/more-words/msg.html?val=${encode(val)}`
 			);
-			copiarAlPortapapeles(val);
+			copyMessage(val);
 		};
 	</script>
 </html>
