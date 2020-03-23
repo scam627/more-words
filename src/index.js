@@ -58,14 +58,24 @@ const fx = new TextScramble(el);
 let counter = 0;
 
 const params = new URLSearchParams(window.location.search);
-let msg = params.get("val");
+const token = params.get("token");
 
-const activate = () => {
+$.ajax({
+	url: "https://andresjaramilloalvarez.com/talks/services/get_message.php",
+	method: "post",
+	data: { token: token },
+	success: res => {
+		const msg = JSON.parse(res).message;
+		activate(msg);
+	}
+});
+
+const activate = msg => {
 	launchFullScreen(document.documentElement);
-	next();
+	next(msg);
 };
 
-const next = () => {
+const next = msg => {
 	let phrases = decode(msg).split("\n");
 	console.log(phrases[counter]);
 	fx.setText(phrases[counter]).then(() => {

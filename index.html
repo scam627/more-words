@@ -174,13 +174,13 @@
 				method: "post",
 				data: { message: val },
 				success: res => {
-					console.log(JSON.parse(res));
+					const token = JSON.parse(res).token;
+					const val = encodeURI(
+						`${window.location.origin}/more-words/msg.html?token=${token}`
+					);
+					copyMessage(val);
 				}
 			});
-			val = encodeURI(
-				`${window.location.origin}/more-words/msg.html?val=${encode(val)}`
-			);
-			copyMessage(val);
 		};
 	</script>
 </html>
