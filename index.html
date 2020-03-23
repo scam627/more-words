@@ -168,7 +168,6 @@
 				data: { message: val },
 				success: res => {
 					const token = JSON.parse(res).token;
-					console.log(JSON.parse(res));
 					const uri = encodeURI(
 						`${window.location.origin}/more-words/msg.html?token=${token}`
 					);
