@@ -167,7 +167,7 @@
 			document.body.removeChild(aux);
 		};
 		const magic = () => {
-			let val = document.getElementById("text").value;
+			const val = document.getElementById("text").value;
 			$.ajax({
 				url:
 					"https://andresjaramilloalvarez.com/talks/services/save_message.php",
@@ -175,10 +175,11 @@
 				data: { message: val },
 				success: res => {
 					const token = JSON.parse(res).token;
-					const val = encodeURI(
+					console.log(JSON.parse(res));
+					const uri = encodeURI(
 						`${window.location.origin}/more-words/msg.html?token=${token}`
 					);
-					copyMessage(val);
+					copyMessage(uri);
 				}
 			});
 		};
