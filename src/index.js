@@ -78,7 +78,7 @@ const next = () => {
 	let phrases = msg.split("\n");
 	console.log(phrases[counter]);
 	fx.setText(phrases[counter]).then(() => {
-		setTimeout(next(msg), 2000);
+		setTimeout(next, 2000);
 	});
 	counter = (counter + 1) % phrases.length;
 };
