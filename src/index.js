@@ -61,7 +61,7 @@ const params = new URLSearchParams(window.location.search);
 const token = params.get("token");
 let msg = "";
 
-const activate = msg => {
+const activate = () => {
 	launchFullScreen(document.documentElement);
 	$.ajax({
 		url: "https://andresjaramilloalvarez.com/talks/services/get_message.php",
