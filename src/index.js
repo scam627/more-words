@@ -59,29 +59,28 @@ let counter = 0;
 
 const params = new URLSearchParams(window.location.search);
 const token = params.get("token");
-
-$.ajax({
-	url: "https://andresjaramilloalvarez.com/talks/services/get_message.php",
-	method: "post",
-	data: { token: token },
-	success: res => {
-		const msg = JSON.parse(res).message;
-		activate(msg);
-	}
-});
+let msg = "";
 
 const activate = msg => {
 	launchFullScreen(document.documentElement);
-	next(msg);
+	$.ajax({
+		url: "https://andresjaramilloalvarez.com/talks/services/get_message.php",
+		method: "post",
+		data: { token: token },
+		success: res => {
+			msg = JSON.parse(res).message;
+			next;
+		}
+	});
 };
 
-const next = msg => {
+const next = () => {
 	let phrases = msg.split("\n");
 	console.log(phrases[counter]);
 	fx.setText(phrases[counter]).then(() => {
-		counter = (counter + 1) % phrases.length;
 		setTimeout(next(msg), 2000);
 	});
+	counter = (counter + 1) % phrases.length;
 };
 
 function launchFullScreen(element) {
