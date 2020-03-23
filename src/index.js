@@ -72,13 +72,14 @@ $.ajax({
 
 const activate = msg => {
 	launchFullScreen(document.documentElement);
-	const phrases = msg.split("\n");
-	next(phrases);
+	next(msg);
 };
 
-const next = phrases => {
+const next = msg => {
+	let phrases = msg.split("\n");
+	console.log(phrases[counter]);
 	fx.setText(phrases[counter]).then(() => {
-		setTimeout(next(phrases), 2000);
+		setTimeout(next(msg), 2000);
 	});
 	counter = (counter + 1) % phrases.length;
 };
