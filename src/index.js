@@ -76,28 +76,12 @@ const activate = msg => {
 };
 
 const next = msg => {
-	let phrases = decode(msg).split("\n");
+	let phrases = msg.split("\n");
 	console.log(phrases[counter]);
 	fx.setText(phrases[counter]).then(() => {
 		setTimeout(next, 2000);
 	});
 	counter = (counter + 1) % phrases.length;
-};
-
-const encode = inp => {
-	let out = new String();
-	for (let i = 0; i < inp.length; i++) {
-		out += String.fromCharCode(inp[i].charCodeAt() + 5);
-	}
-	return out;
-};
-
-const decode = inp => {
-	let out = new String();
-	for (let i = 0; i < inp.length; i++) {
-		out += String.fromCharCode(inp[i].charCodeAt() - 5);
-	}
-	return out;
 };
 
 function launchFullScreen(element) {
