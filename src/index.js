@@ -69,7 +69,7 @@ const activate = msg => {
 		data: { token: token },
 		success: res => {
 			msg = JSON.parse(res).message;
-			next;
+			next();
 		}
 	});
 };
