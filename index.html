@@ -108,7 +108,7 @@
 	</head>
 	<body>
 		<div id="wrapper">
-			<form id="paper" method="get" action="" class="paper">
+			<form id="paper" method="get" action="javascript:void(0);" class="paper">
 				<!-- <div id="margin">
 					<input
 						id="title"
@@ -127,7 +127,7 @@
 					style="overflow: hidden; word-wrap: break-word; resize: none; height: 260px; "
 				></textarea>
 				<br />
-				<button id="button" value="Create" onclick="magic()">
+				<button id="button" onclick="magic()">
 					Copiar
 				</button>
 			</form>
@@ -150,14 +150,6 @@
 			$("#title").focus();
 		});
 
-		const encode = inp => {
-			let out = new String();
-			for (let i = 0; i < inp.length; i++) {
-				out += String.fromCharCode(inp[i].charCodeAt() + 5);
-			}
-			return out;
-		};
-
 		const copyMessage = text => {
 			var aux = document.createElement("input");
 			aux.setAttribute("value", text);
@@ -166,6 +158,7 @@
 			document.execCommand("copy");
 			document.body.removeChild(aux);
 		};
+
 		const magic = () => {
 			const val = document.getElementById("text").value;
 			$.ajax({
